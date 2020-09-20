@@ -3,11 +3,14 @@ build:
 	  -t nalocal512/noagendastream-mirror \
 		.
 
+random:
+	docker run -d -P --cidfile na.cid nalocal512/noagendastream-mirror
+
 run:
 	docker run \
 		-d \
 		-p 8000:8000 \
-		--cidfile .cid \
+		--cidfile na.cid \
 	  --name noagendastream-mirror \
 	  -e  noagendastream-mirror \
     -e SOURCE_PASSWORD=testing123 \
@@ -21,6 +24,10 @@ run:
 	  -t nalocal512/noagendastream-mirror
 
 clean:
-	docker kill `cat .cid`
-	docker rm `cat .cid`
-	rm .cid
+	-docker kill `cat na.cid`
+	-docker rm `cat na.cid`
+	rm na.cid
+
+logs:
+	$(eval CID := $(shell cat na.cid))
+	docker logs ${CID}

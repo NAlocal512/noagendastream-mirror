@@ -1,19 +1,19 @@
 FROM ubuntu:bionic
 MAINTAINER Josh Cox <josh 'at' webhosting coop>
 
-ENV SOURCE_PASSWORD=secret123
-ENV RELAY_PASSWORD=secret123
-ENV ADMIN_PASSWORD=secret123
+ENV SOURCE_PASSWORD=random
+ENV RELAY_PASSWORD=random
+ENV ADMIN_PASSWORD=random
 ENV TARGET_HOSTNAME=0.0.0.0
-ENV TARGET_LOCATION=Earth
-ENV TARGET_ADMIN_EMAIL='icemaster@localhost'
-ENV TARGET_ADMIN_USER=admin
+ENV TARGET_LOCATION=DroneStarState
+ENV TARGET_ADMIN_EMAIL='nalocal512@your.local.na.chapter.org'
+ENV TARGET_ADMIN_USER=NAlocal512
 
 ENV DEBIAN_FRONTEND noninteractive
 #APT
 RUN \
   apt-get -yqq update \
-  && apt-get install -yqq sudo gettext icecast2 \
+  && apt-get install -yqq sudo mime-support uuid-runtime gettext icecast2 \
   && rm -Rf /var/lib/apt/lists/*
 
 ENV DEBIAN_FRONTEND interactive
@@ -24,3 +24,5 @@ VOLUME /var/log/icecast2
 
 COPY start.sh /start.sh
 COPY icecast.xml.tpl /icecast.xml.tpl
+
+RUN date -I
