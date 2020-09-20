@@ -1,6 +1,6 @@
 <icecast>
-    <location>Earth</location>
-    <admin>icemaster@localhost</admin>
+    <location>$TARGET_LOCATION</location>
+    <admin>$TARGET_ADMIN_EMAIL</admin>
     <limits>
         <clients>100</clients>
         <sources>2</sources>
@@ -14,7 +14,7 @@
     <authentication>
         <source-password>$SOURCE_PASSWORD</source-password>
         <relay-password>$RELAY_PASSWORD</relay-password>
-        <admin-user>admin</admin-user>
+        <admin-user>$TARGET_ADMIN_USER</admin-user>
         <admin-password>$ADMIN_PASSWORD</admin-password>
     </authentication>
     <hostname>$TARGET_HOSTNAME</hostname>

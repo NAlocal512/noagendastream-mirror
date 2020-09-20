@@ -23,6 +23,9 @@ You can set the passwords like so:
     -e RELAY_PASSWORD=testing123 \
     -e ADMIN_PASSWORD=testing123 \
     -e TARGET_HOSTNAME=localhost \
+    -e TARGET_LOCATION=Earth \
+    -e TARGET_ADMIN_EMAIL='testmaster@localhost' \
+    -e TARGET_ADMIN_USER=funkyadmin \
 		-v logs:/var/log/icecast2 \
 	  -t nalocal512/noagendastream-mirror
 ```
