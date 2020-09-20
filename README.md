@@ -1,12 +1,12 @@
 # noagendastream-mirror
 
-Icecast2 Mirror for the No Agenda Stream
+Icecast Mirror for the No Agenda Stream
 
 ## TLDR
 
 ```
 docker pull nalocal512/noagendastream-mirror
-docker run -d -P --cidfile na.cid nalocal512/noagendastream-mirror
+docker run -d -p 0.0.0.0:8000:8000 --cidfile na.cid nalocal512/noagendastream-mirror
 ```
 
 Your username will be `NAlocal512` by default, and the passwords will be the first things in the in container's logs.
@@ -20,6 +20,15 @@ docker logs $(cat na.cid)
 In this case you can now access your 'mirror', by going to (replace localhost with your IP or resolvable domain name):
 [http://localhost:8000/mirror](http://localhost:8000/mirror)
 and the username would `NAlocal512` and the password would be what you found in the logs above labeled as `ADMIN_PASSWORD`. 
+
+### Alpine
+
+There is an alpine image as well.
+
+```
+docker pull nalocal512/noagendastream-mirror:alpine
+docker run -d -p 0.0.0.0:8000:8000 --cidfile na.cid nalocal512/noagendastream-mirror:alpine
+```
 
 ## Details
 
@@ -55,4 +64,18 @@ You can build locally:
 
 ```
   docker build -t nalocal512/noagendastream-mirror .
+```
+
+### Makefile
+
+Or you can build with the makefile.
+
+```
+make
+```
+
+Or the alpine build.
+
+```
+make alpine
 ```

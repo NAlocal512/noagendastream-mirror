@@ -1,15 +1,28 @@
+all: clean build random logs
+
+alpine: clean build-alpine random-alpine logs
+
 build:
 	docker build \
 	  -t nalocal512/noagendastream-mirror \
 		.
 
+build-alpine:
+	docker build \
+	  -f Dockerfile.alpine \
+		-t nalocal512/noagendastream-mirror:alpine \
+		.
+
 random:
-	docker run -d -P --cidfile na.cid nalocal512/noagendastream-mirror
+	docker run -d -p 0.0.0.0:8000:8000 --cidfile na.cid nalocal512/noagendastream-mirror
+
+random-alpine:
+	docker run -d -p 0.0.0.0:8000:8000 --cidfile na.cid nalocal512/noagendastream-mirror:alpine
 
 run:
 	docker run \
 		-d \
-		-p 8000:8000 \
+		-p 0.0.0.0:8000:8000 \
 		--cidfile na.cid \
 	  --name noagendastream-mirror \
     -e SOURCE_PASSWORD=testing123 \
@@ -23,9 +36,9 @@ run:
 	  -t nalocal512/noagendastream-mirror
 
 clean:
-	-docker kill `cat na.cid`
-	-docker rm `cat na.cid`
-	rm na.cid
+	-@docker kill `cat na.cid`
+	-@docker rm `cat na.cid`
+	-@rm na.cid
 
 logs:
 	$(eval CID := $(shell cat na.cid))

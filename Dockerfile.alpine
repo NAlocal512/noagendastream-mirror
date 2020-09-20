@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM alpine:edge
 MAINTAINER Josh Cox <josh 'at' webhosting coop>
 
 ENV SOURCE_PASSWORD=random
@@ -9,23 +9,18 @@ ENV TARGET_LOCATION=DroneStarState
 ENV TARGET_ADMIN_EMAIL='nalocal512@your.local.na.chapter.org'
 ENV TARGET_ADMIN_USER=NAlocal512
 
-ENV DEBIAN_FRONTEND noninteractive
-#APT
-RUN \
-  apt-get -yqq update \
-  && apt-get install -yqq mime-support uuid-runtime gettext icecast2 \
-  && rm -Rf /var/lib/apt/lists/*
+RUN apk add --no-cache icecast gettext util-linux mailcap \
+  && adduser --disabled-password icecast2 \
+  && mkdir -p /home/icecast2
 
-ENV DEBIAN_FRONTEND interactive
-
-
-
-RUN mkdir -p /home/icecast2
 COPY start.sh /home/icecast2/start.sh
 COPY icecast.xml.tpl /home/icecast2/icecast.xml.tpl
-RUN chown -R icecast2 /home/icecast2
+RUN chown -R icecast2. /home/icecast2 \
+ && mkdir -p /var/log/icecast2 \
+ && chown -R icecast2. /var/log/icecast2
 USER icecast2
 WORKDIR /home/icecast2
+
 CMD ["/home/icecast2/start.sh"]
 EXPOSE 8000
 VOLUME /var/log/icecast2
