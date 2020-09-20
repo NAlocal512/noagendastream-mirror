@@ -23,7 +23,7 @@ and the username would `NAlocal512` and the password would be what you found in 
 
 ### Alpine
 
-There is an alpine image as well.
+There is an experimental alpine image as well.
 
 ```
 docker pull nalocal512/noagendastream-mirror:alpine
