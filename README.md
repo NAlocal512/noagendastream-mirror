@@ -30,6 +30,10 @@ You can set the passwords like so:
     -t nalocal512/noagendastream-mirror
 ```
 
+In this case you can now access your 'mirror' by going to 
+[http://localhost:8000/mirror](http://localhost:8000/mirror)
+and the username would `funkyadmin` and the password would be `testing123`.  Adjust those values accordingly in your `docker run` command, most importantly would be `TARGET_HOSTNAME` which you should set to a local domain name or IP address so that external computers around your LAN can access the relay.
+
 ## Build
 
 You can build locally:
