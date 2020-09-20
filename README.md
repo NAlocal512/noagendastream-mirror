@@ -26,7 +26,7 @@ and the username would `NAlocal512` and the password would be what you found in 
 ### Run 
 
 By setting some env vars
-you can set the passwords like so:
+you can set the username and passwords, change where the logs go, and change the ports like so:
 
 ```
 docker run \
@@ -34,7 +34,6 @@ docker run \
   -p 8000:8000 \
   --cidfile na.cid \
   --name noagendastream-mirror \
-  -e  noagendastream-mirror \
   -e SOURCE_PASSWORD=testing123 \
   -e RELAY_PASSWORD=testing123 \
   -e ADMIN_PASSWORD=testing123 \

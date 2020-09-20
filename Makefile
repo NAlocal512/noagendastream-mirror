@@ -12,7 +12,6 @@ run:
 		-p 8000:8000 \
 		--cidfile na.cid \
 	  --name noagendastream-mirror \
-	  -e  noagendastream-mirror \
     -e SOURCE_PASSWORD=testing123 \
     -e RELAY_PASSWORD=testing123 \
     -e ADMIN_PASSWORD=testing123 \

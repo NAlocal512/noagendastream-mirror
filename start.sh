@@ -2,11 +2,7 @@
 PASS_LENGTH=12
 this_rand()
 {
-  local DATE3=$(date +"%N-%S" | sha256sum)
-  local SEED1=$(uuidgen -r)
-  local SEED2=$(echo $SEED1:$DATE3 | sha512sum)
-  local myresult=$(echo $SEED2 | sha512sum | base64 | head -c ${PASS_LENGTH})
-  RANDOM_PASS=$myresult
+  RANDOM_PASS=$(uuidgen -r | sha512sum | base64 | head -c ${PASS_LENGTH})
 }
 
 if [[ "$SOURCE_PASSWORD" == 'random' ]]; then
