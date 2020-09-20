@@ -1,0 +1,50 @@
+<icecast>
+    <location>Earth</location>
+    <admin>icemaster@localhost</admin>
+    <limits>
+        <clients>100</clients>
+        <sources>2</sources>
+        <queue-size>524288</queue-size>
+        <client-timeout>30</client-timeout>
+        <header-timeout>15</header-timeout>
+        <source-timeout>10</source-timeout>
+        <burst-on-connect>1</burst-on-connect>
+        <burst-size>65535</burst-size>
+    </limits>
+    <authentication>
+        <source-password>$SOURCE_PASSWORD</source-password>
+        <relay-password>$RELAY_PASSWORD</relay-password>
+        <admin-user>admin</admin-user>
+        <admin-password>$ADMIN_PASSWORD</admin-password>
+    </authentication>
+    <hostname>$TARGET_HOSTNAME</hostname>
+    <listen-socket>
+        <port>8000</port>
+    </listen-socket>
+    <http-headers>
+        <header name="Access-Control-Allow-Origin" value="*" />
+    </http-headers>
+    <relay>
+	      <server>listen.noagendastream.com</server>
+        <port>80</port>
+        <mount>/noagenda</mount>
+        <local-mount>/mirror</local-mount>
+    </relay>
+    <fileserve>1</fileserve>
+    <paths>
+        <basedir>/usr/share/icecast2</basedir>
+        <logdir>/var/log/icecast2</logdir>
+        <webroot>/usr/share/icecast2/web</webroot>
+        <adminroot>/usr/share/icecast2/admin</adminroot>
+        <alias source="/" destination="/status.xsl"/>
+    </paths>
+    <logging>
+        <accesslog>access.log</accesslog>
+        <errorlog>error.log</errorlog>
+        <loglevel>1</loglevel> <!-- 4 Debug, 3 Info, 2 Warn, 1 Error -->
+        <logsize>10000</logsize> <!-- Max size of a logfile -->
+    </logging>
+    <security>
+        <chroot>0</chroot>
+    </security>
+</icecast>

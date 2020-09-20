@@ -1,18 +1,9 @@
-# noagendastream-mirror
-Mirror for the No Agenda Stream
+build:
+	docker build \
+	  -t nalocal512/noagendastream-mirror \
+		.
 
-
-## Pull
-
-```
-	docker pull nalocal512/noagendastream-mirror
-```
-
-## Run
-
-You can set the passwords like so:
-
-```
+run:
 	docker run \
 		-d \
 		-p 8000:8000 \
@@ -25,12 +16,8 @@ You can set the passwords like so:
     -e TARGET_HOSTNAME=localhost \
 		-v logs:/var/log/icecast2 \
 	  -t nalocal512/noagendastream-mirror
-```
 
-## Build
-
-You can build locally:
-
-```
-	docker build -t nalocal512/noagendastream-mirror .
-```
+clean:
+	docker kill `cat .cid`
+	docker rm `cat .cid`
+	rm .cid
