@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine
 MAINTAINER Josh Cox <josh 'at' webhosting coop>
 
 ENV RELAY_MODE=normal \
@@ -10,7 +10,7 @@ ENV RELAY_MODE=normal \
     TARGET_ADMIN_EMAIL='nalocal512@your.local.na.chapter.org' \
     TARGET_ADMIN_USER=NAlocal512
 
-RUN apk add --no-cache icecast gettext util-linux mailcap \
+RUN apk add --no-cache bash icecast gettext util-linux mailcap \
   && adduser --disabled-password icecast2 \
   && mkdir -p /home/icecast2
 

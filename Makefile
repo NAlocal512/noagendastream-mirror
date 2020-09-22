@@ -23,8 +23,8 @@ random:
 
 random-alpine:
 	docker run \
-		-e RELAY_MODE=all \
 		-d \
+		-e RELAY_MODE=all \
 		-p 0.0.0.0:8000:8000 \
 		--cidfile na.cid \
 		nalocal512/noagendastream-mirror:alpine
