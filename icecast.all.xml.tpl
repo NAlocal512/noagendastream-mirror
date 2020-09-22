@@ -3,7 +3,7 @@
     <admin>$TARGET_ADMIN_EMAIL</admin>
     <limits>
         <clients>100</clients>
-        <sources>2</sources>
+        <sources>8</sources>
         <queue-size>524288</queue-size>
         <client-timeout>30</client-timeout>
         <header-timeout>15</header-timeout>
@@ -29,6 +29,28 @@
         <port>80</port>
         <mount>/noagenda</mount>
         <local-mount>/noagenda</local-mount>
+         <on-demand>1</on-demand>
+    </relay>
+    <relay>
+	      <server>ice3.somafm.com</server>
+        <port>80</port>
+        <mount>/groovesalad-256-mp3</mount>
+        <local-mount>/groovesalad</local-mount>
+         <on-demand>1</on-demand>
+    </relay>
+    <relay>
+	      <server>ice3.somafm.com</server>
+        <port>80</port>
+        <mount>/secretagent-128-mp3</mount>
+        <local-mount>/secretagent</local-mount>
+         <on-demand>1</on-demand>
+    </relay>
+    <relay>
+	      <server>ice3.somafm.com</server>
+        <port>80</port>
+        <mount>/suburbsofgoa-128-mp3</mount>
+        <local-mount>/goa</local-mount>
+         <on-demand>1</on-demand>
     </relay>
     <fileserve>1</fileserve>
     <paths>
@@ -41,7 +63,7 @@
     <logging>
         <accesslog>access.log</accesslog>
         <errorlog>error.log</errorlog>
-        <loglevel>1</loglevel> <!-- 4 Debug, 3 Info, 2 Warn, 1 Error -->
+        <loglevel>4</loglevel> <!-- 4 Debug, 3 Info, 2 Warn, 1 Error -->
         <logsize>10000</logsize> <!-- Max size of a logfile -->
     </logging>
     <security>

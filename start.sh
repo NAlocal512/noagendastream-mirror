@@ -23,7 +23,12 @@ if [ "$ADMIN_PASSWORD" = 'random' ]; then
   echo "your ADMIN_PASSWORD is set to '$RANDOM_PASS'"
 fi
 
-envsubst < /home/icecast2/icecast.xml.tpl > /home/icecast2/icecast.xml
+if [ "$RELAY_MODE" = 'all' ]; then
+  echo 'All mode enabled'
+  envsubst < /home/icecast2/icecast.all.xml.tpl > /home/icecast2/icecast.xml
+else
+  envsubst < /home/icecast2/icecast.xml.tpl > /home/icecast2/icecast.xml
+fi
 
 main () {
   if [ -x "/usr/bin/icecast2" ]; then
