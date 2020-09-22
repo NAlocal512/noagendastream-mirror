@@ -20,12 +20,13 @@ RUN \
 ENV DEBIAN_FRONTEND interactive
 
 RUN mkdir -p /home/icecast2
-COPY start.sh /home/icecast2/start.sh
+COPY util.bash /home/icecast2/util.bash
+COPY start.bash /home/icecast2/start.bash
 COPY icecast.xml.tpl /home/icecast2/icecast.xml.tpl
 COPY icecast.all.xml.tpl /home/icecast2/icecast.all.xml.tpl
 RUN chown -R icecast2 /home/icecast2
 USER icecast2
 WORKDIR /home/icecast2
-CMD ["/home/icecast2/start.sh"]
+CMD ["/home/icecast2/start.bash"]
 EXPOSE 8000
 VOLUME /var/log/icecast2
