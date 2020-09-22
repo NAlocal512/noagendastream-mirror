@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 PASS_LENGTH=12
 this_rand()
 {
@@ -25,6 +25,8 @@ fi
 
 if [ "$RELAY_MODE" = 'all' ]; then
   echo 'All mode enabled'
+  export RANDOM_ICE=$((1 + RANDOM % 6 ))
+  echo RANDOM_ICE $RANDOM_ICE
   envsubst < /home/icecast2/icecast.all.xml.tpl > /home/icecast2/icecast.xml
 else
   envsubst < /home/icecast2/icecast.xml.tpl > /home/icecast2/icecast.xml
