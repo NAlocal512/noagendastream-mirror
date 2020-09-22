@@ -5,6 +5,7 @@ this_rand()
   RANDOM_PASS=$(uuidgen -r | sha512sum | base64 | head -c ${PASS_LENGTH})
 }
 
+# If any of these variable equals 'random' then reset to random
 if [ "$SOURCE_PASSWORD" = 'random' ]; then
   this_rand
   export SOURCE_PASSWORD=$RANDOM_PASS
@@ -16,6 +17,11 @@ if [ "$RELAY_PASSWORD" = 'random' ]; then
   this_rand
   export RELAY_PASSWORD=$RANDOM_PASS
   echo "your RELAY_PASSWORD is set to '$RANDOM_PASS'"
+fi
+if [ "$TARGET_ADMIN_USER" = 'random' ]; then
+  this_rand
+  export TARGET_ADMIN_USER=$RANDOM_PASS
+  echo "your ADMIN_USER is set to '$RANDOM_PASS'"
 fi
 if [ "$ADMIN_PASSWORD" = 'random' ]; then
   this_rand
@@ -41,7 +47,5 @@ main () {
   $THIS_ICECAST -c /home/icecast2/icecast.xml
 }
 
-#/usr/bin/icecast2 -c /home/icecast2/icecast.xml
-#sudo -Eu icecast2 icecast2 -c /home/icecast2/icecast.xml
 
 main $@
