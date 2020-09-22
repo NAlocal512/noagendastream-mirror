@@ -30,6 +30,14 @@ docker pull nalocal512/noagendastream-mirror:alpine
 docker run -d -p 0.0.0.0:8000:8000 --cidfile na.cid nalocal512/noagendastream-mirror:alpine
 ```
 
+### All mode
+
+You can also run in a mode that relays more stations by using setting the environment variable `-e RELAY_MODE=all` i.e.:
+
+```
+	docker run -d -e RELAY_MODE=all -p 0.0.0.0:8000:8000 --cidfile na.cid nalocal512/noagendastream-mirror
+```
+
 ## Details
 
 ### Run 
