@@ -48,6 +48,13 @@
     <relay>
 	      <server>ice$RANDOM_ICE.somafm.com</server>
         <port>80</port>
+        <mount>/xmasinfrisko-128-mp3</mount>
+        <local-mount>/xmasnfrisko</local-mount>
+         <on-demand>1</on-demand>
+    </relay>
+    <relay>
+	      <server>ice$RANDOM_ICE.somafm.com</server>
+        <port>80</port>
         <mount>/groovesalad-256-mp3</mount>
         <local-mount>/groovesalad</local-mount>
          <on-demand>1</on-demand>
